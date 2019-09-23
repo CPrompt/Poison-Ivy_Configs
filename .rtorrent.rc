@@ -136,4 +136,14 @@ log.open_file = "log", (cfg.logfile)
 log.add_output = "info", "log"
 #log.add_output = "tracker_debug", "log"
 
+## Ratio settings
+ratio.enable=
+ratio.min.set=50
+ratio.max.set=100
+ratio.upload.set=20M
+
+method.set = group.seeding.ratio.command, "d.close= ; d.erase="
+
+
+
 ### END of rtorrent.rc ###

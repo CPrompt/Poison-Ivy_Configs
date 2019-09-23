@@ -32,11 +32,9 @@ shopt -s histappend
 case ${TERM} in
 	xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
 		PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
-		#trap 'echo -ne "\e]0;WAYNE-MANOR\007"' DEBUG
 		;;
 	screen)
 		PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
-		#trap 'echo -ne "\e]0;WAYNE-MANOR SCREEN\007"' DEBUG
 		;;
 esac
 
@@ -87,7 +85,7 @@ if [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] ; then
 
 	#----------- Use this if you want to see the git branch you are on in the prompt.  However, this really jacks up the
 	#----------- trap set in "case $(TERM)" section above.
-	PS1="$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[01;32m\]\u@\h'; fi)\[\033[01;34m\] \w \$([[ \$? != 0 ]] && echo \"\[\033[01;31m\]:(\[\033[01;34m\] \")\$(parse_git_branch)\[\033[00m\] $ "
+	#PS1="$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[01;32m\]\u@\h'; fi)\[\033[01;34m\] \w \$([[ \$? != 0 ]] && echo \"\[\033[01;31m\]:(\[\033[01;34m\] \")\$(parse_git_branch)\[\033[00m\] $ "
 
 	# Use this other PS1 string if you want \W for root and \w for all other users:
 	# PS1="$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h\[\033[01;34m\] \W'; else echo '\[\033[01;32m\]\u@\h\[\033[01;34m\] \w'; fi) \$([[ \$? != 0 ]] && echo \"\[\033[01;31m\]:(\[\033[01;34m\] \")\\$\[\033[00m\] "
@@ -103,6 +101,16 @@ else
 	# PS1="\u@\h $(if [[ ${EUID} == 0 ]]; then echo '\W'; else echo '\w'; fi) \$([[ \$? != 0 ]] && echo \":( \")\$ "
 
 fi
+
+if [ -n "$SSH_CLIENT" ]; then text=" ssh"
+
+fi
+
+#export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\${text}\[\033[00m\] $ "
+export PS1="\[\033[94m\]\u@\h \[\033[32m\]\W\[\033[33m\]\${text}\[\033[00m\] $ "
+#export PS2="\u@\h \[033[32m\]\w\[033\33m\]${text}$\[\e[m\]"
+#export PS1='\[\e[0;31m\]\u@\h:\w${text}$\[\e[m\] '
+
 
 PS2="> "
 PS3="> "
