@@ -127,3 +127,8 @@ export TERM=rxvt-256color
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
+
+
+# start the ssh-agent
+[ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/git
