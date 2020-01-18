@@ -110,6 +110,13 @@ schedule2 = watch_motogp,10,10,"load.start=/home/curtis/rtorrent/watch/motogp/*.
 schedule2 = watch_formula1,10,10,"load.start=/home/curtis/rtorrent/watch/formula1/*.torrent,d.custom1.set=/media/NIGHTWING/TVShows/Formula1/"
 ## Music
 schedule2 = watch_music,10,10,"load.start=/home/curtis/rtorrent/watch/music/*.torrent,d.custom1.set=/home/curtis/Downloads/Music/"
+## TVShows
+schedule2 = watch_mandolorian,10,10,"load.start=/home/curtis/rtorrent/watch/mandalorian/*.torrent,d.custom1.set=/media/NIGHTWING/TVShows/Mandalorian/"
+## Movies
+schedule2 = watch_movies,10,10,"load.start=/home/curtis/rtorrent/watch/movies/*.torrent,d.custom1.set=/media/NIGHTWING/Movies/"
+
+## Doctor Who
+schedule2 = watch_drwho,10,10,"load.start=/home/curtis/rtorrent/watch/doctor_who/*.torrent,d.custom1.set=/media/NIGHTWING/TVShows/DrWho"
 
 
 ## Moving Torrents
